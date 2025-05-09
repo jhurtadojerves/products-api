@@ -1,0 +1,10 @@
+.DS_Store
+.env
+.idea
+Pipfile.lock
+*.pyc
+media
+node_modules
+.volumes
+.vscode
+.coverage

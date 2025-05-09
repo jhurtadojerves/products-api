@@ -1,0 +1,14 @@
+# .coveragerc
+[run]
+omit =
+    */migrations/*
+    */tests/*
+    config/settings/*
+    manage.py
+    urls.py
+
+[report]
+exclude_lines =
+    pragma: no cover
+    if __name__ == .__main__.:
+    raise NotImplementedError
