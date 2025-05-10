@@ -1,0 +1,29 @@
+name: ci
+
+on:
+  pull_request:
+    branches: [main]
+    types: [synchronize, opened, reopened]
+
+concurrency:
+  group: "${{ github.workflow }} @ ${{ github.event.pull_request.head.label || github.head_ref || github.ref }}"
+  cancel-in-progress: true
+
+jobs:
+  ci:
+    name: ci
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Ubuntu dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libpq-dev gcc libjpeg-dev zlib1g-dev libpng-dev libfreetype6-dev
+
+      - name: Install requirements
+        run: pip install -r requirements_dev.txt
+
+      - name: ci
+        run: make lint-check
