@@ -1,0 +1,60 @@
+name: Deploy
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Copy app code to Droplet (excluding .env)
+        uses: appleboy/scp-action@v1
+        with:
+          host: ${{ secrets.DROPLET_HOST }}
+          username: root
+          key: ${{ secrets.DROPLET_SSH_KEY }}
+          source: "."
+          target: "/root/app"
+
+      - name: SSH and deploy containers
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.DROPLET_HOST }}
+          username: root
+          key: ${{ secrets.DROPLET_SSH_KEY }}
+          script: |
+            set -e
+            cd /root/app
+
+            # Verificar que el archivo .env existe en /root
+            if [ ! -f /root/.env ]; then
+              echo "❌ /root/.env not found. Aborting..."
+              exit 1
+            fi
+
+            # Build Django app image
+            docker build -t django-app:${{ github.ref_name }} -f .docker/Dockerfile .
+
+            # Stop and remove previous containers if exist
+            docker stop django-app || true && docker rm django-app || true
+            docker stop celery-worker || true && docker rm celery-worker || true
+
+            # Run Django app container
+            docker run -d --name django-app \
+              --env-file /root/.env \
+              -p 8000:8000 \
+              django-app:${{ github.ref_name }}
+
+            # Run Celery worker using same image
+            docker run -d --name celery-worker \
+              --env-file /root/.env \
+              django-app:${{ github.ref_name }} \
+              celery -A config worker --loglevel=info
+
+            # Clean up unused images
+            docker image prune -f
