@@ -23,7 +23,7 @@ Clona este repositorio en tu máquina local:
 
 ```bash
 git clone git@github.com:jhurtadojerves/products-api.git
-cd zeb
+cd products-api
 ```
 
 ### 2. Crear un archivo `.env`
