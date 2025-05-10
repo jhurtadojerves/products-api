@@ -6,6 +6,11 @@ lint:
 	isort . --profile black
 	flake8 .
 
+lint-check:
+	black . --check
+	isort . --check-only --profile black
+	flake8 .
+
 runserver:
 	docker-compose run --rm -p 8080:8080 app python manage.py runserver 0.0.0.0:8080
 
@@ -16,10 +21,14 @@ migrations:
 	docker-compose run --rm app python manage.py makemigrations
 
 test:
-	docker-compose run --rm app sh -c "coverage run manage.py test --settings=config.settings.test && coverage report"
+	docker-compose run --rm app sh -c "coverage run manage.py test --settings=config.settings.test && coverage report --fail-under=90"
 
 coverage:
 	docker-compose run --rm app sh -c "coverage run manage.py test --settings=config.settings.test && coverage report && coverage html"
 
 shell:
 	docker-compose run --rm app python manage.py shell -v 2
+
+test-ci:
+    coverage run manage.py test --settings=config.settings.test
+    coverage report --fail-under=90
