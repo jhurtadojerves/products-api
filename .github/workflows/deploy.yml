@@ -21,7 +21,7 @@ jobs:
           source: "."
           target: "/root/app"
 
-      - name: SSH and deploy containers
+      - name: SSH and deploy containers (Dockerfile handles New Relic)
         uses: appleboy/ssh-action@v1
         with:
           host: ${{ secrets.DROPLET_HOST }}
@@ -31,30 +31,33 @@ jobs:
             set -e
             cd /root/app
 
-            # Verificar que el archivo .env existe en /root
             if [ ! -f /root/.env ]; then
               echo "❌ /root/.env not found. Aborting..."
               exit 1
             fi
 
-            # Build Django app image
+            if [ ! -f newrelic.ini ]; then
+              echo "❌ newrelic.ini not found. Aborting..."
+              exit 1
+            fi
+
             docker build -t django-app:${{ github.ref_name }} -f .docker/Dockerfile .
 
-            # Stop and remove previous containers if exist
             docker stop django-app || true && docker rm django-app || true
             docker stop celery-worker || true && docker rm celery-worker || true
 
-            # Run Django app container
+            # Django
             docker run -d --name django-app \
               --env-file /root/.env \
+              -v /root/app/newrelic.ini:/app/newrelic.ini \
               -p 8000:8000 \
               django-app:${{ github.ref_name }}
 
-            # Run Celery worker using same image
+            # Celery
             docker run -d --name celery-worker \
               --env-file /root/.env \
-              django-app:${{ github.ref_name }} \
-              celery -A config worker --loglevel=info
+              -e MODE=worker \
+              -v /root/app/newrelic.ini:/app/newrelic.ini \
+              django-app:${{ github.ref_name }}
 
-            # Clean up unused images
             docker image prune -f
