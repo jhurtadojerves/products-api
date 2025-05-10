@@ -13,11 +13,24 @@ User = get_user_model()
 
 
 class ProductVisitMetadataBuilder:
+    """
+    Service class for building metadata related to product visits.
+
+    This class extracts metadata from the request, such as IP address,
+    user agent, device type, and other relevant information.
+    """
+
     def __init__(self, request):
         self.request = request
         self.ua = parse(request.headers.get("User-Agent", ""))
 
     def build(self) -> dict:
+        """
+        Build a dictionary containing metadata about the product visit.
+
+        Returns:
+            dict: Metadata including IP address, user agent, device type, OS, browser, etc.
+        """
         return {
             "ip": self._get_ip(),
             "user_agent": self.request.headers.get("User-Agent", ""),
@@ -32,6 +45,12 @@ class ProductVisitMetadataBuilder:
         }
 
     def _get_ip(self) -> str:
+        """
+        Retrieve the IP address from the request.
+
+        Returns:
+            str: The IP address of the client making the request.
+        """
         x_forwarded_for = self.request.META.get("HTTP_X_FORWARDED_FOR")
 
         if x_forwarded_for:
@@ -40,6 +59,12 @@ class ProductVisitMetadataBuilder:
         return self.request.META.get("REMOTE_ADDR")
 
     def _get_device_type(self) -> str:
+        """
+        Determine the type of device based on the user agent.
+
+        Returns:
+            str: The type of device (e.g., "mobile", "tablet", "pc", "bot", or "unknown").
+        """
         if self.ua.is_mobile:
             return "mobile"
         elif self.ua.is_tablet:
@@ -52,8 +77,29 @@ class ProductVisitMetadataBuilder:
 
 
 class ProductEmailService:
+    """
+    Service class for handling product-related email notifications.
+
+    This class provides methods to build and send email notifications
+    when a product is updated.
+
+    Methods:
+    - build: Creates the subject and body of the email notification.
+    - send_email: Sends the email notification to administrators.
+    """
+
     @classmethod
     def build(cls, product: Product, user: UserType) -> tuple[str, str]:
+        """
+        Build the subject and body for a product update email.
+
+        Args:
+            product (Product): The product that was updated.
+            user (UserType): The user who made the update.
+
+        Returns:
+            tuple[str, str]: The email subject and body.
+        """
         subject = f"[Catálogo] Producto actualizado: {product.name} ({product.sku})"
 
         body = f"""
@@ -79,6 +125,16 @@ class ProductEmailService:
 
     @classmethod
     def send_email(cls, product: Product, user: UserType) -> None:
+        """
+        Send an email notification about a product update to administrators.
+
+        Args:
+            product (Product): The product that was updated.
+            user (UserType): The user who made the update.
+
+        Returns:
+            None
+        """
         admins = User.objects.filter(is_staff=True, is_active=True).exclude(
             email=user.email
         )

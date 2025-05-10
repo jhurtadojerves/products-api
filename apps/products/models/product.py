@@ -10,6 +10,15 @@ class Product(models.Model):
     brand = models.ForeignKey(Brand, on_delete=models.PROTECT, related_name="products")
 
     def __str__(self):
+        """
+        Return a string representation of the Product instance.
+
+        This method returns the name and SKU of the product, which is useful
+        for displaying the product in the Django admin or other interfaces.
+
+        Returns:
+            str: The name and SKU of the product in the format "name (SKU)".
+        """
         return f"{self.name} ({self.sku})"
 
 
