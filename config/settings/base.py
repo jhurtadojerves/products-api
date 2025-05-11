@@ -156,10 +156,10 @@ SPECTACULAR_SETTINGS = {
     "AUTHENTICATION_WHITELIST": [
         "rest_framework_simplejwt.authentication.JWTAuthentication"
     ],
-    "SECURITY": [{"BearerAuth": []}],
+    "SECURITY": [{"jwtAuth": []}],
     "COMPONENTS": {
         "securitySchemes": {
-            "BearerAuth": {
+            "jwtAuth": {
                 "type": "http",
                 "scheme": "bearer",
                 "bearerFormat": "JWT",

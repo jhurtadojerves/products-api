@@ -1,4 +1,4 @@
-# 🛍️ Products API
+# Products API
 
 Products API es una plataforma RESTful desarrollada con Django y Django REST Framework para gestionar productos, marcas y usuarios. Soporta autenticación JWT, tareas en segundo plano con Celery, y despliegue vía Docker. Ideal para pruebas técnicas o proyectos reales con necesidades escalables.
 
@@ -66,6 +66,8 @@ Ejecuta las migraciones para configurar la base de datos:
 
 ```bash
 docker-compose exec app python manage.py migrate
+# o
+make migrate
 ```
 
 ### 5. Crear un superusuario
@@ -74,11 +76,17 @@ Crea un superusuario para administrar el sistema:
 
 ```bash
 docker-compose exec app python manage.py createsuperuser
+# o
+make createsuperuser
 ```
 
 ### 6. Acceder a la aplicación
 
-La API estará disponible en: http://localhost:8080/api/docs
+- La API estará disponible en: http://localhost:8080/api/docs
+
+- Se puede descargar una colección de [postman](api.postman_collection.json)
+
+- O el documento de open api: http://localhost:8080/api/schema.json
 
 ---
 
@@ -86,9 +94,9 @@ La API estará disponible en: http://localhost:8080/api/docs
 
 El proyecto sigue la arquitectura MVC (Modelo-Vista-Controlador), que se implementa en Django de la siguiente manera:
 
-- Modelos (Models): Representan la estructura de los datos y las reglas de negocio. Se encuentran en apps/<nombre_app>/models/.
-- Vistas (Views): Gestionan la lógica de la aplicación y responden a las solicitudes HTTP. Se encuentran en apps/<nombre_app>/viewsets/.
-- Controladores (Serializers): En Django, los serializers actúan como controladores al transformar los datos entre los modelos y las vistas. Se encuentran en apps/<nombre_app>/serializers/.
+- Modelos (Models): Representan la estructura de los datos y las reglas de negocio. Se encuentran en `apps/<nombre_app>/models/`.
+- Vistas (Views): Gestionan la lógica de la aplicación y responden a las solicitudes HTTP. Se encuentran en `apps/<nombre_app>/viewsets/`.
+- Controladores (Serializers): En Django, los serializers actúan como controladores al transformar los datos entre los modelos y las vistas. Se encuentran en `apps/<nombre_app>/serializers/`.
 
 ## ¿Por qué se eligió la arquitectura MVC?
 
@@ -133,6 +141,12 @@ make lint
 make runserver
 ```
 
+4. Acceder a la shell de django
+
+```
+make shell
+```
+
 ---
 
 ## Tecnologías utilizadas
@@ -144,6 +158,7 @@ make runserver
 - Celery: Para la ejecución de tareas en segundo plano.
 - Docker: Para la contenedorización de la aplicación.
 - GitHub Actions: Para CI/CD.
+- Newrelic: para monitoring
 
 ---
 
