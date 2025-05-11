@@ -37,7 +37,9 @@ urlpatterns = [
     path("api/schema.json", SpectacularJSONAPIView.as_view(), name="schema"),
     path(
         "api/docs/",
-        SpectacularSwaggerView.as_view(url_name="schema"),
+        SpectacularSwaggerView.as_view(
+            url_name="schema", template_name="api/swagger-ui.html"
+        ),
         name="swagger-ui",
     ),
 ]

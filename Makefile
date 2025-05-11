@@ -20,6 +20,9 @@ migrate:
 migrations:
 	docker-compose run --rm app python manage.py makemigrations
 
+createsuperuser:
+	docker-compose run --rm app python manage.py createsuperuser
+
 test:
 	docker-compose run --rm app sh -c "coverage run manage.py test --settings=config.settings.test && coverage report --fail-under=90"
 
