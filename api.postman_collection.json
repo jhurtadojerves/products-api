@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "ffec6a17-f5aa-4632-88bd-7d4c760e41ea",
+		"_postman_id": "4cfb3804-c81c-4c52-8ba9-28daf4b63ac8",
 		"name": "Products API",
 		"description": "Products API docs",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
@@ -73,7 +73,7 @@
 																}
 															]
 														},
-														"description": "Reset de contraseña por email"
+														"description": "Reset the password for a specific admin user."
 													},
 													"response": [
 														{
@@ -172,7 +172,7 @@
 														}
 													]
 												},
-												"description": "ViewSet for managing admin users.\n\nThis ViewSet provides CRUD operations for admin users (`is_staff=True`)\nand includes additional functionality for resetting passwords and\npreventing self-deletion.\n\nAttributes:\n    queryset (QuerySet): Filters the user model to include only staff users.\n    serializer_class (Serializer): Specifies the serializer used for admin user data.\n    permission_classes (list): Restricts access to admin users only.\n\nMethods:\n    - perform_create: Ensures that new users are created as active staff members.\n    - destroy: Prevents an admin user from deleting their own account.\n    - reset_password: Allows resetting the password of a specific admin user."
+												"description": "ViewSet for managing admin users.\n\nThis ViewSet provides CRUD operations for admin users (`is_staff=True`)\nand includes additional functionality for resetting passwords and\npreventing self-deletion.\n\nAttributes:\n    queryset (QuerySet): Filters the user model to include only staff users.\n    serializer_class (Serializer): Specifies the serializer used for admin user data.\n    permission_classes (list): Restricts access to admin users only.\n\nMethods:\n    - get_serializer_class: Dynamically selects the serializer class based on the action.\n    - perform_create: Ensures that new users are created as active staff members.\n    - destroy: Prevents an admin user from deleting their own account.\n    - reset_password: Allows resetting the password of a specific admin user."
 											},
 											"response": [
 												{
@@ -249,7 +249,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"email\": \"<email>\",\n  \"password\": \"<string>\",\n  \"is_active\": \"<boolean>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\"\n}",
+													"raw": "{\n  \"is_active\": \"<boolean>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\"\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
@@ -277,7 +277,7 @@
 														}
 													]
 												},
-												"description": "ViewSet for managing admin users.\n\nThis ViewSet provides CRUD operations for admin users (`is_staff=True`)\nand includes additional functionality for resetting passwords and\npreventing self-deletion.\n\nAttributes:\n    queryset (QuerySet): Filters the user model to include only staff users.\n    serializer_class (Serializer): Specifies the serializer used for admin user data.\n    permission_classes (list): Restricts access to admin users only.\n\nMethods:\n    - perform_create: Ensures that new users are created as active staff members.\n    - destroy: Prevents an admin user from deleting their own account.\n    - reset_password: Allows resetting the password of a specific admin user."
+												"description": "ViewSet for managing admin users.\n\nThis ViewSet provides CRUD operations for admin users (`is_staff=True`)\nand includes additional functionality for resetting passwords and\npreventing self-deletion.\n\nAttributes:\n    queryset (QuerySet): Filters the user model to include only staff users.\n    serializer_class (Serializer): Specifies the serializer used for admin user data.\n    permission_classes (list): Restricts access to admin users only.\n\nMethods:\n    - get_serializer_class: Dynamically selects the serializer class based on the action.\n    - perform_create: Ensures that new users are created as active staff members.\n    - destroy: Prevents an admin user from deleting their own account.\n    - reset_password: Allows resetting the password of a specific admin user."
 											},
 											"response": [
 												{
@@ -301,7 +301,7 @@
 														],
 														"body": {
 															"mode": "raw",
-															"raw": "{\n  \"email\": \"<email>\",\n  \"password\": \"<string>\",\n  \"is_active\": \"<boolean>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\"\n}",
+															"raw": "{\n  \"is_active\": \"<boolean>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\"\n}",
 															"options": {
 																"raw": {
 																	"headerFamily": "json",
@@ -338,7 +338,7 @@
 														}
 													],
 													"cookie": [],
-													"body": "{\n  \"email\": \"<email>\",\n  \"id\": \"<integer>\",\n  \"is_active\": \"<boolean>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\"\n}"
+													"body": "{\n  \"is_active\": \"<boolean>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\"\n}"
 												}
 											]
 										},
@@ -368,7 +368,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"email\": \"<email>\",\n  \"is_active\": \"<boolean>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"password\": \"<string>\"\n}",
+													"raw": "{\n  \"is_active\": \"<boolean>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\"\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
@@ -396,7 +396,7 @@
 														}
 													]
 												},
-												"description": "ViewSet for managing admin users.\n\nThis ViewSet provides CRUD operations for admin users (`is_staff=True`)\nand includes additional functionality for resetting passwords and\npreventing self-deletion.\n\nAttributes:\n    queryset (QuerySet): Filters the user model to include only staff users.\n    serializer_class (Serializer): Specifies the serializer used for admin user data.\n    permission_classes (list): Restricts access to admin users only.\n\nMethods:\n    - perform_create: Ensures that new users are created as active staff members.\n    - destroy: Prevents an admin user from deleting their own account.\n    - reset_password: Allows resetting the password of a specific admin user."
+												"description": "ViewSet for managing admin users.\n\nThis ViewSet provides CRUD operations for admin users (`is_staff=True`)\nand includes additional functionality for resetting passwords and\npreventing self-deletion.\n\nAttributes:\n    queryset (QuerySet): Filters the user model to include only staff users.\n    serializer_class (Serializer): Specifies the serializer used for admin user data.\n    permission_classes (list): Restricts access to admin users only.\n\nMethods:\n    - get_serializer_class: Dynamically selects the serializer class based on the action.\n    - perform_create: Ensures that new users are created as active staff members.\n    - destroy: Prevents an admin user from deleting their own account.\n    - reset_password: Allows resetting the password of a specific admin user."
 											},
 											"response": [
 												{
@@ -420,7 +420,7 @@
 														],
 														"body": {
 															"mode": "raw",
-															"raw": "{\n  \"email\": \"<email>\",\n  \"is_active\": \"<boolean>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"password\": \"<string>\"\n}",
+															"raw": "{\n  \"is_active\": \"<boolean>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\"\n}",
 															"options": {
 																"raw": {
 																	"headerFamily": "json",
@@ -457,7 +457,7 @@
 														}
 													],
 													"cookie": [],
-													"body": "{\n  \"email\": \"<email>\",\n  \"id\": \"<integer>\",\n  \"is_active\": \"<boolean>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\"\n}"
+													"body": "{\n  \"is_active\": \"<boolean>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\"\n}"
 												}
 											]
 										},
@@ -496,7 +496,7 @@
 														}
 													]
 												},
-												"description": "Prevents an admin user from deleting their own account.\n\nArgs:\n    request (Request): The HTTP request object.\n    *args: Additional positional arguments.\n    **kwargs: Additional keyword arguments.\n\nReturns:\n    Response: A response indicating success or failure of the deletion."
+												"description": "Prevents an admin user from deleting their own account.\n\nIf the user attempts to delete their own account, a 400 Bad Request\nresponse is returned. Otherwise, the deletion proceeds as normal.\n\nArgs:\n    request (Request): The HTTP request object.\n    *args: Additional positional arguments.\n    **kwargs: Additional keyword arguments.\n\nReturns:\n    Response: A response indicating success or failure of the deletion."
 											},
 											"response": [
 												{
@@ -561,7 +561,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/api/v1/accounts/",
+											"raw": "{{baseUrl}}/api/v1/accounts/?limit=<integer>&offset=<integer>",
 											"host": [
 												"{{baseUrl}}"
 											],
@@ -570,9 +570,21 @@
 												"v1",
 												"accounts",
 												""
+											],
+											"query": [
+												{
+													"key": "limit",
+													"value": "<integer>",
+													"description": "Number of results to return per page."
+												},
+												{
+													"key": "offset",
+													"value": "<integer>",
+													"description": "The initial index from which to return the results."
+												}
 											]
 										},
-										"description": "ViewSet for managing admin users.\n\nThis ViewSet provides CRUD operations for admin users (`is_staff=True`)\nand includes additional functionality for resetting passwords and\npreventing self-deletion.\n\nAttributes:\n    queryset (QuerySet): Filters the user model to include only staff users.\n    serializer_class (Serializer): Specifies the serializer used for admin user data.\n    permission_classes (list): Restricts access to admin users only.\n\nMethods:\n    - perform_create: Ensures that new users are created as active staff members.\n    - destroy: Prevents an admin user from deleting their own account.\n    - reset_password: Allows resetting the password of a specific admin user."
+										"description": "ViewSet for managing admin users.\n\nThis ViewSet provides CRUD operations for admin users (`is_staff=True`)\nand includes additional functionality for resetting passwords and\npreventing self-deletion.\n\nAttributes:\n    queryset (QuerySet): Filters the user model to include only staff users.\n    serializer_class (Serializer): Specifies the serializer used for admin user data.\n    permission_classes (list): Restricts access to admin users only.\n\nMethods:\n    - get_serializer_class: Dynamically selects the serializer class based on the action.\n    - perform_create: Ensures that new users are created as active staff members.\n    - destroy: Prevents an admin user from deleting their own account.\n    - reset_password: Allows resetting the password of a specific admin user."
 									},
 									"response": [
 										{
@@ -591,7 +603,7 @@
 													}
 												],
 												"url": {
-													"raw": "{{baseUrl}}/api/v1/accounts/",
+													"raw": "{{baseUrl}}/api/v1/accounts/?limit=<integer>&offset=<integer>",
 													"host": [
 														"{{baseUrl}}"
 													],
@@ -600,6 +612,18 @@
 														"v1",
 														"accounts",
 														""
+													],
+													"query": [
+														{
+															"key": "limit",
+															"value": "<integer>",
+															"description": "Number of results to return per page."
+														},
+														{
+															"key": "offset",
+															"value": "<integer>",
+															"description": "The initial index from which to return the results."
+														}
 													]
 												}
 											},
@@ -613,7 +637,7 @@
 												}
 											],
 											"cookie": [],
-											"body": "[\n  {\n    \"email\": \"<email>\",\n    \"id\": \"<integer>\",\n    \"is_active\": \"<boolean>\",\n    \"first_name\": \"<string>\",\n    \"last_name\": \"<string>\"\n  },\n  {\n    \"email\": \"<email>\",\n    \"id\": \"<integer>\",\n    \"is_active\": \"<boolean>\",\n    \"first_name\": \"<string>\",\n    \"last_name\": \"<string>\"\n  }\n]"
+											"body": "{\n  \"count\": \"<integer>\",\n  \"results\": [\n    {\n      \"email\": \"<email>\",\n      \"id\": \"<integer>\",\n      \"is_active\": \"<boolean>\",\n      \"first_name\": \"<string>\",\n      \"last_name\": \"<string>\"\n    },\n    {\n      \"email\": \"<email>\",\n      \"id\": \"<integer>\",\n      \"is_active\": \"<boolean>\",\n      \"first_name\": \"<string>\",\n      \"last_name\": \"<string>\"\n    }\n  ],\n  \"next\": \"<uri>\",\n  \"previous\": \"<uri>\"\n}"
 										}
 									]
 								},
@@ -663,7 +687,7 @@
 												""
 											]
 										},
-										"description": "ViewSet for managing admin users.\n\nThis ViewSet provides CRUD operations for admin users (`is_staff=True`)\nand includes additional functionality for resetting passwords and\npreventing self-deletion.\n\nAttributes:\n    queryset (QuerySet): Filters the user model to include only staff users.\n    serializer_class (Serializer): Specifies the serializer used for admin user data.\n    permission_classes (list): Restricts access to admin users only.\n\nMethods:\n    - perform_create: Ensures that new users are created as active staff members.\n    - destroy: Prevents an admin user from deleting their own account.\n    - reset_password: Allows resetting the password of a specific admin user."
+										"description": "ViewSet for managing admin users.\n\nThis ViewSet provides CRUD operations for admin users (`is_staff=True`)\nand includes additional functionality for resetting passwords and\npreventing self-deletion.\n\nAttributes:\n    queryset (QuerySet): Filters the user model to include only staff users.\n    serializer_class (Serializer): Specifies the serializer used for admin user data.\n    permission_classes (list): Restricts access to admin users only.\n\nMethods:\n    - get_serializer_class: Dynamically selects the serializer class based on the action.\n    - perform_create: Ensures that new users are created as active staff members.\n    - destroy: Prevents an admin user from deleting their own account.\n    - reset_password: Allows resetting the password of a specific admin user."
 									},
 									"response": [
 										{
@@ -769,7 +793,8 @@
 															"description": "(Required) "
 														}
 													]
-												}
+												},
+												"description": "ViewSet for managing product brands.\n\nThis ViewSet provides CRUD operations for the `Brand` model and includes\ncustom behavior for handling deletion when a brand is referenced by other\nobjects (e.g., products).\n\nAttributes:\n    queryset (QuerySet): The set of all `Brand` objects.\n    serializer_class (Serializer): The serializer used for brand data.\n    lookup_field (str): Specifies that the `name` field is used for lookups.\n\nMethods:\n    - destroy: Handles deletion of a brand and prevents deletion if it is\n      referenced by other objects."
 											},
 											"response": [
 												{
@@ -873,7 +898,8 @@
 															"description": "(Required) "
 														}
 													]
-												}
+												},
+												"description": "ViewSet for managing product brands.\n\nThis ViewSet provides CRUD operations for the `Brand` model and includes\ncustom behavior for handling deletion when a brand is referenced by other\nobjects (e.g., products).\n\nAttributes:\n    queryset (QuerySet): The set of all `Brand` objects.\n    serializer_class (Serializer): The serializer used for brand data.\n    lookup_field (str): Specifies that the `name` field is used for lookups.\n\nMethods:\n    - destroy: Handles deletion of a brand and prevents deletion if it is\n      referenced by other objects."
 											},
 											"response": [
 												{
@@ -991,7 +1017,8 @@
 															"description": "(Required) "
 														}
 													]
-												}
+												},
+												"description": "ViewSet for managing product brands.\n\nThis ViewSet provides CRUD operations for the `Brand` model and includes\ncustom behavior for handling deletion when a brand is referenced by other\nobjects (e.g., products).\n\nAttributes:\n    queryset (QuerySet): The set of all `Brand` objects.\n    serializer_class (Serializer): The serializer used for brand data.\n    lookup_field (str): Specifies that the `name` field is used for lookups.\n\nMethods:\n    - destroy: Handles deletion of a brand and prevents deletion if it is\n      referenced by other objects."
 											},
 											"response": [
 												{
@@ -1090,7 +1117,8 @@
 															"description": "(Required) "
 														}
 													]
-												}
+												},
+												"description": "Delete a brand unless it is referenced by other objects.\n\nThis method attempts to delete a brand instance. If the brand is\nreferenced by other objects (e.g., products), the deletion is blocked,\nand a detailed error message is returned.\n\nArgs:\n    request (Request): The HTTP request object.\n    *args: Additional positional arguments.\n    **kwargs: Additional keyword arguments.\n\nReturns:\n    Response: A 204 No Content response if the deletion is successful,\n    or a 400 Bad Request response if the brand is referenced by other objects."
 											},
 											"response": [
 												{
@@ -1155,7 +1183,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/api/v1/brands/",
+											"raw": "{{baseUrl}}/api/v1/brands/?limit=<integer>&offset=<integer>",
 											"host": [
 												"{{baseUrl}}"
 											],
@@ -1164,8 +1192,21 @@
 												"v1",
 												"brands",
 												""
+											],
+											"query": [
+												{
+													"key": "limit",
+													"value": "<integer>",
+													"description": "Number of results to return per page."
+												},
+												{
+													"key": "offset",
+													"value": "<integer>",
+													"description": "The initial index from which to return the results."
+												}
 											]
-										}
+										},
+										"description": "ViewSet for managing product brands.\n\nThis ViewSet provides CRUD operations for the `Brand` model and includes\ncustom behavior for handling deletion when a brand is referenced by other\nobjects (e.g., products).\n\nAttributes:\n    queryset (QuerySet): The set of all `Brand` objects.\n    serializer_class (Serializer): The serializer used for brand data.\n    lookup_field (str): Specifies that the `name` field is used for lookups.\n\nMethods:\n    - destroy: Handles deletion of a brand and prevents deletion if it is\n      referenced by other objects."
 									},
 									"response": [
 										{
@@ -1184,7 +1225,7 @@
 													}
 												],
 												"url": {
-													"raw": "{{baseUrl}}/api/v1/brands/",
+													"raw": "{{baseUrl}}/api/v1/brands/?limit=<integer>&offset=<integer>",
 													"host": [
 														"{{baseUrl}}"
 													],
@@ -1193,6 +1234,18 @@
 														"v1",
 														"brands",
 														""
+													],
+													"query": [
+														{
+															"key": "limit",
+															"value": "<integer>",
+															"description": "Number of results to return per page."
+														},
+														{
+															"key": "offset",
+															"value": "<integer>",
+															"description": "The initial index from which to return the results."
+														}
 													]
 												}
 											},
@@ -1206,7 +1259,7 @@
 												}
 											],
 											"cookie": [],
-											"body": "[\n  {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\"\n  },\n  {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\"\n  }\n]"
+											"body": "{\n  \"count\": \"<integer>\",\n  \"results\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\"\n    }\n  ],\n  \"next\": \"<uri>\",\n  \"previous\": \"<uri>\"\n}"
 										}
 									]
 								},
@@ -1255,7 +1308,8 @@
 												"brands",
 												""
 											]
-										}
+										},
+										"description": "ViewSet for managing product brands.\n\nThis ViewSet provides CRUD operations for the `Brand` model and includes\ncustom behavior for handling deletion when a brand is referenced by other\nobjects (e.g., products).\n\nAttributes:\n    queryset (QuerySet): The set of all `Brand` objects.\n    serializer_class (Serializer): The serializer used for brand data.\n    lookup_field (str): Specifies that the `name` field is used for lookups.\n\nMethods:\n    - destroy: Handles deletion of a brand and prevents deletion if it is\n      referenced by other objects."
 									},
 									"response": [
 										{
@@ -1409,7 +1463,7 @@
 														}
 													],
 													"cookie": [],
-													"body": "{\n  \"brand\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"price\": \"-83213.\",\n  \"sku\": \"<string>\"\n}"
+													"body": "{\n  \"brand\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"price\": \"-381\",\n  \"sku\": \"<string>\"\n}"
 												}
 											]
 										},
@@ -1439,7 +1493,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"brand\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"price\": \".\",\n  \"sku\": \"<string>\"\n}",
+													"raw": "{\n  \"brand\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"price\": \"2915.0\",\n  \"sku\": \"<string>\"\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
@@ -1491,7 +1545,7 @@
 														],
 														"body": {
 															"mode": "raw",
-															"raw": "{\n  \"brand\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"price\": \".\",\n  \"sku\": \"<string>\"\n}",
+															"raw": "{\n  \"brand\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"price\": \"2915.0\",\n  \"sku\": \"<string>\"\n}",
 															"options": {
 																"raw": {
 																	"headerFamily": "json",
@@ -1528,7 +1582,7 @@
 														}
 													],
 													"cookie": [],
-													"body": "{\n  \"brand\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"price\": \"-83213.\",\n  \"sku\": \"<string>\"\n}"
+													"body": "{\n  \"brand\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"price\": \"-381\",\n  \"sku\": \"<string>\"\n}"
 												}
 											]
 										},
@@ -1558,7 +1612,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"sku\": \"<string>\",\n  \"name\": \"<string>\",\n  \"price\": \"9475.\",\n  \"brand\": \"<integer>\"\n}",
+													"raw": "{\n  \"sku\": \"<string>\",\n  \"name\": \"<string>\",\n  \"price\": \"-2697.6\",\n  \"brand\": \"<integer>\"\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
@@ -1610,7 +1664,7 @@
 														],
 														"body": {
 															"mode": "raw",
-															"raw": "{\n  \"sku\": \"<string>\",\n  \"name\": \"<string>\",\n  \"price\": \"9475.\",\n  \"brand\": \"<integer>\"\n}",
+															"raw": "{\n  \"sku\": \"<string>\",\n  \"name\": \"<string>\",\n  \"price\": \"-2697.6\",\n  \"brand\": \"<integer>\"\n}",
 															"options": {
 																"raw": {
 																	"headerFamily": "json",
@@ -1647,7 +1701,7 @@
 														}
 													],
 													"cookie": [],
-													"body": "{\n  \"brand\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"price\": \"-83213.\",\n  \"sku\": \"<string>\"\n}"
+													"body": "{\n  \"brand\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"price\": \"-381\",\n  \"sku\": \"<string>\"\n}"
 												}
 											]
 										},
@@ -1751,7 +1805,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/api/v1/products/",
+											"raw": "{{baseUrl}}/api/v1/products/?limit=<integer>&offset=<integer>",
 											"host": [
 												"{{baseUrl}}"
 											],
@@ -1760,6 +1814,18 @@
 												"v1",
 												"products",
 												""
+											],
+											"query": [
+												{
+													"key": "limit",
+													"value": "<integer>",
+													"description": "Number of results to return per page."
+												},
+												{
+													"key": "offset",
+													"value": "<integer>",
+													"description": "The initial index from which to return the results."
+												}
 											]
 										},
 										"description": "ViewSet for managing products.\n\nThis ViewSet provides CRUD operations for products and includes additional\nfunctionality for tracking product views and sending email notifications\nwhen a product is updated.\n\nAttributes:\n    queryset (QuerySet): The set of all products in the database.\n    serializer_class (Serializer): The serializer used for product data.\n    lookup_field (str): The field used to look up a product (SKU in this case).\n\nMethods:\n    - retrieve: Retrieves a product and tracks unauthenticated user visits.\n    - update: Updates a product and sends an email notification to administrators."
@@ -1781,7 +1847,7 @@
 													}
 												],
 												"url": {
-													"raw": "{{baseUrl}}/api/v1/products/",
+													"raw": "{{baseUrl}}/api/v1/products/?limit=<integer>&offset=<integer>",
 													"host": [
 														"{{baseUrl}}"
 													],
@@ -1790,6 +1856,18 @@
 														"v1",
 														"products",
 														""
+													],
+													"query": [
+														{
+															"key": "limit",
+															"value": "<integer>",
+															"description": "Number of results to return per page."
+														},
+														{
+															"key": "offset",
+															"value": "<integer>",
+															"description": "The initial index from which to return the results."
+														}
 													]
 												}
 											},
@@ -1803,7 +1881,7 @@
 												}
 											],
 											"cookie": [],
-											"body": "[\n  {\n    \"brand\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"price\": \"-776\",\n    \"sku\": \"<string>\"\n  },\n  {\n    \"brand\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"price\": \"8.02\",\n    \"sku\": \"<string>\"\n  }\n]"
+											"body": "{\n  \"count\": \"<integer>\",\n  \"results\": [\n    {\n      \"brand\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"price\": \"14\",\n      \"sku\": \"<string>\"\n    },\n    {\n      \"brand\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"price\": \"-04432.\",\n      \"sku\": \"<string>\"\n    }\n  ],\n  \"next\": \"<uri>\",\n  \"previous\": \"<uri>\"\n}"
 										}
 									]
 								},
@@ -1833,7 +1911,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"brand\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"price\": \".\",\n  \"sku\": \"<string>\"\n}",
+											"raw": "{\n  \"brand\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"price\": \"2915.0\",\n  \"sku\": \"<string>\"\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
@@ -1877,7 +1955,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"brand\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"price\": \".\",\n  \"sku\": \"<string>\"\n}",
+													"raw": "{\n  \"brand\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"price\": \"2915.0\",\n  \"sku\": \"<string>\"\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
@@ -1908,7 +1986,7 @@
 												}
 											],
 											"cookie": [],
-											"body": "{\n  \"brand\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"price\": \"-83213.\",\n  \"sku\": \"<string>\"\n}"
+											"body": "{\n  \"brand\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"price\": \"-381\",\n  \"sku\": \"<string>\"\n}"
 										}
 									]
 								}
@@ -1923,6 +2001,16 @@
 										{
 											"name": "v1 token refresh create",
 											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "{{bearerToken}}",
+															"type": "string"
+														}
+													]
+												},
 												"method": "POST",
 												"header": [
 													{
@@ -1972,6 +2060,11 @@
 															{
 																"key": "Accept",
 																"value": "application/json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
 															}
 														],
 														"body": {
@@ -2021,11 +2114,19 @@
 											"listen": "test",
 											"script": {
 												"exec": [
-													"const json = pm.response.json();",
-													"",
-													"if (json.access) {",
-													"  pm.collectionVariables.set(\"bearerToken\", json.access);",
-													"}"
+													"const response = pm.response.json();",
+													"pm.collectionVariables.set(\"bearerToken\", response.access);",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													""
 												],
 												"type": "text/javascript",
 												"packages": {}
@@ -2033,6 +2134,16 @@
 										}
 									],
 									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{bearerToken}}",
+													"type": "string"
+												}
+											]
+										},
 										"method": "POST",
 										"header": [
 											{
@@ -2073,6 +2184,11 @@
 													{
 														"key": "Content-Type",
 														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
 													}
 												],
 												"body": {
@@ -2139,7 +2255,7 @@
 	"variable": [
 		{
 			"key": "baseUrl",
-			"value": "/"
+			"value": "http://127.0.0.1:8080"
 		},
 		{
 			"key": "bearerToken",

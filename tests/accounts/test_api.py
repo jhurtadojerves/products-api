@@ -82,7 +82,8 @@ class UserAdminTests(APITestCase):
         data = response.json()
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
         self.assertEqual(
-            data.get("non_field_errors", [])[0], "Only can change your password"
+            data.get("non_field_errors", [])[0],
+            "You can only change your own password.",
         )
 
     def test_admin_cannot_delete_yourself(self):
@@ -108,7 +109,6 @@ class UserAdminTests(APITestCase):
         data = response.json()
 
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-        print(data)
         self.assertEqual(data.get("email"), "third@example.com")
         self.assertEqual(
             data,
