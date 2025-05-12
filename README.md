@@ -88,6 +88,50 @@ make createsuperuser
 
 - O el documento de open api: http://localhost:8080/api/schema.json
 
+### 6. Ambiente productivo
+
+- Usuarios de Prueba
+
+```bash
+[
+  {
+    "email": "jhurtadojerves+1@gmail.com",
+    "is_active": true,
+    "first_name": "Test1",
+    "last_name": "User1",
+    "password": "Password123!"
+  },
+  {
+    "email": "jhurtadojerves+2@gmail.com",
+    "is_active": true,
+    "first_name": "Test2",
+    "last_name": "User2",
+    "password": "Password123!"
+  },
+  {
+    "email": "jhurtadojerves+3@gmail.com",
+    "is_active": true,
+    "first_name": "Test3",
+    "last_name": "User3",
+    "password": "Password123!"
+  },
+  {
+    "email": "jhurtadojerves+4@gmail.com",
+    "is_active": true,
+    "first_name": "Test4",
+    "last_name": "User4",
+    "password": "Password123!"
+  },
+  {
+    "email": "jhurtadojerves+5@gmail.com",
+    "is_active": true,
+    "first_name": "Test5",
+    "last_name": "User5",
+    "password": "Password123!"
+  }
+]
+```
+
 ---
 
 ## Estructura del proyecto
