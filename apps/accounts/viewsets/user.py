@@ -5,7 +5,11 @@ from rest_framework.decorators import action
 from rest_framework.permissions import IsAdminUser
 from rest_framework.response import Response
 
-from apps.accounts.serializers.user import AdminUserSerializer, PasswordResetSerializer
+from apps.accounts.serializers.user import (
+    AdminUserSerializer,
+    AdminUserUpdateSerializer,
+    PasswordResetSerializer,
+)
 
 User = get_user_model()
 
@@ -15,7 +19,7 @@ User = get_user_model()
     reset_password=extend_schema(
         request=PasswordResetSerializer,
         responses={200: None},
-        description="Reset de contraseña por email",
+        description="Reset the password for a specific admin user.",
     )
 )
 class AdminUserViewSet(viewsets.ModelViewSet):
@@ -32,6 +36,7 @@ class AdminUserViewSet(viewsets.ModelViewSet):
         permission_classes (list): Restricts access to admin users only.
 
     Methods:
+        - get_serializer_class: Dynamically selects the serializer class based on the action.
         - perform_create: Ensures that new users are created as active staff members.
         - destroy: Prevents an admin user from deleting their own account.
         - reset_password: Allows resetting the password of a specific admin user.
@@ -41,9 +46,26 @@ class AdminUserViewSet(viewsets.ModelViewSet):
     serializer_class = AdminUserSerializer
     permission_classes = [IsAdminUser]
 
+    def get_serializer_class(self):
+        """
+        Dynamically selects the serializer class based on the action.
+
+        For update and partial update actions, the `AdminUserUpdateSerializer`
+        is used. For all other actions, the `AdminUserSerializer` is used.
+
+        Returns:
+            Serializer: The appropriate serializer class for the action.
+        """
+        if self.action in ["update", "partial_update"]:
+            return AdminUserUpdateSerializer
+        return AdminUserSerializer
+
     def perform_create(self, serializer):
         """
         Ensure that new admin users are created as active staff members.
+
+        This method automatically sets the `is_staff` and `is_active` fields
+        to `True` when creating a new admin user.
 
         Args:
             serializer (Serializer): The serializer instance containing validated data.
@@ -56,6 +78,9 @@ class AdminUserViewSet(viewsets.ModelViewSet):
     def destroy(self, request, *args, **kwargs):
         """
         Prevents an admin user from deleting their own account.
+
+        If the user attempts to delete their own account, a 400 Bad Request
+        response is returned. Otherwise, the deletion proceeds as normal.
 
         Args:
             request (Request): The HTTP request object.
@@ -80,10 +105,10 @@ class AdminUserViewSet(viewsets.ModelViewSet):
         Reset the password of a specific admin user.
 
         This action validates the current password and sets a new password
-        for the specified user.
+        for the specified user. Only admin users can perform this action.
 
         Args:
-            request (Request): The HTTP request object.
+            request (Request): The HTTP request object containing the new password.
             pk (str): The primary key of the user whose password is being reset.
 
         Returns:
